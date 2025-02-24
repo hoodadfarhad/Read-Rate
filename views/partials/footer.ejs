@@ -1,0 +1,70 @@
+
+<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+    <div class="col-md-4 d-flex align-items-center">
+      <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+        <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+      </a>
+      <span class="mb-3 mb-md-0 text-body-secondary">© 2025 Company, Inc</span>
+    </div>
+
+    <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+      <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"></use></svg></a></li>
+      <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"></use></svg></a></li>
+     
+    </ul>
+  </footer>
+
+
+
+  <!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+<script>
+   
+
+
+
+let menuTimeOut;
+
+$("#menuTrigger").on("mouseover", function () {
+    clearTimeout(menuTimeOut); // Stop any ongoing fade out timer
+
+    // Smoothly fade in the menu
+    $("#menu").stop(true, true).fadeIn(300);        // clearing the stack here
+    $("#menuTrigger").addClass("noDisplay"); 
+    $("#menu").css("display","inline-block");       // changin none to inline-block
+});
+
+$("#menu").on("mouseover", function () {
+    clearTimeout(menuTimeOut); // Stop fade out if user moves to the menu
+});
+
+$("#menu, #menuTrigger").on("mouseleave", function () {
+    menuTimeOut = setTimeout(function () { 
+        $("#menu").stop(true, true).fadeOut(600);
+
+
+        setTimeout(function () { 
+
+        $("#menuTrigger").removeClass("noDisplay"); 
+        
+    }, 10);
+
+
+      
+
+    }, 3000); // Start hiding the menu after 5s
+});
+
+
+
+
+
+
+
+
+  </script>
+
+</body>
+</html>

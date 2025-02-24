@@ -1,0 +1,171 @@
+<%-  include("partials/header.ejs") %>
+
+ <!-- hidden modal that gets toggled by clicking on read more btn -->
+<% console.log("from frontend");%>
+
+
+ <% if (modalNote.length > 0) { %>
+  <% console.log("from inside");%>
+  
+  <div class="modal modal-sheet position-static p-4 py-md-5 d-block" tabindex="-1" role="dialog" id="modalSheet" >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content rounded-4 shadow">
+      <div class="modal-header border-bottom-0">
+        <h1 class="modal-title fs-5">Full Review:</h1>
+      </div>
+      <div class="modal-body py-0">
+        <p><%= modalNote || "No notes available."%></p>
+      </div>
+      <div class="modal-footer flex-column align-items-center w-100 gap-2 pb-3 border-top-0">
+        <form action="/resetModal" method="post">
+          <input type="hidden" name="resetModal" value="">
+        <button type="submit" class="btn btn-lg btn-secondary" data-bs-dismiss="modal">Close</button>
+        </form>
+    
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<% } %>
+
+
+
+
+<div class="fixedBtnContainer">
+
+
+    <button class="btn  rounded-circle p-3 lh-1" type="button" id="menuTrigger">
+        <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" fill="currentColor" class="bi bi-tools" viewBox="0 0 16 16">
+            <path d="M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.27 3.27a.997.997 0 0 0 1.414 0l1.586-1.586a.997.997 0 0 0 0-1.414l-3.27-3.27a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3q0-.405-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814zm9.646 10.646a.5.5 0 0 1 .708 0l2.914 2.915a.5.5 0 0 1-.707.707l-2.915-2.914a.5.5 0 0 1 0-.708M3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026z"/>
+          </svg>
+      </button>
+
+
+     <!-- Menu section -->
+<div id="menu"> 
+
+    <div class="flex-shrink-0 p-3" style="width: 280px;">
+        <a href="/" class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
+          <svg class="bi pe-none me-2" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+          <span class="fs-5 fw-semibold">Menu</span>
+        </a>
+
+        <ul class="list-unstyled ps-0">
+          <li class="mb-1">
+            <a href="/new">
+            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0"  aria-expanded="true">
+              Add New
+            </button>
+          </a>
+          </li>
+
+
+          <li class="mb-1">
+            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"  aria-expanded="false">
+              Sort By
+            </button>
+
+
+            <div class="collapse" id="dashboard-collapse">
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Rating</a></li>
+                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Date</a></li>
+                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Alphabetically</a></li>
+              </ul>
+            </div>
+          </li>
+
+
+
+          <li class="mb-1">
+            <input type="text" placeholder="Enter Title Here: ">
+          </li>
+
+
+
+          <li class="border-top my-3"></li>
+          <li class="mb-1">
+            <a href="/contact">
+            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
+              Contact Me!
+            </button>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+</div>
+
+
+</div>
+
+
+
+
+<!-- where all the books are shown in grid -->
+<div class="allBooks">
+
+   <% if (locals.sentBookArray.length > 0) { %>      <!--  age araye khali nabud: -->
+        
+        <% sentBookArray.forEach(element => { %>
+
+   
+            
+            <div class="bookItem">
+
+
+            <img src= "<%= element.img %>" alt="">
+            <div class="bookDetail">
+
+
+              
+              <h2><%= element.title %></h2>
+
+              <div class="info">
+                <p>Rating: <%= element.rating %>/10</p>
+              <p>Author: <%= element.author %></p>
+              
+              </div>
+              
+
+             
+                
+               
+
+                
+          
+
+          
+
+      
+            </div>
+
+
+            <div class="readMoreClass">
+              <form action="/readMore" method="post"> 
+                  <input type="hidden" name="sentNote" value="<%= element.note %>">
+                  <button type="submit" class="btn btn-outline-secondary">Read More</button>
+              </form> 
+          </div>
+
+
+        </div>
+
+    <%    }); %>
+
+   <%  } else{ %>   <!-- age ke hich ketabi nabud mese bala umadane site vase avvalin bar -->
+    <p>no Book has been added</p>
+    
+<% } %>
+
+</div>
+
+
+
+
+
+
+<%-  include("partials/footer.ejs") %>

@@ -1,0 +1,84 @@
+.main{
+   /* height: 80vh; */
+}
+
+#menu{
+    display: none;
+    background-color: burlywood;
+    border: 5px black solid;
+    position: fixed;
+    top: 35%;
+    margin-left: 5%;
+    
+}
+
+.fixedBtnContainer > button {
+
+
+    position: fixed;
+    margin-left: 5%;
+    top: 45%;
+
+
+}
+
+.noDisplay{
+    display: none;
+}
+
+.carHeight{
+    height: 250px;
+}
+
+.topRated{
+    display: flex;
+    
+    justify-content:center;
+    align-items: center;
+    gap: 250px;
+    padding: 20px 0px 20px 0px;
+}
+
+
+.allBooks{
+
+display: grid;
+grid-template-columns: 1fr 1fr;
+grid-template-rows: 1fr 1fr;
+gap: 25px;
+text-align: center;
+
+
+}
+
+
+.bookItem{
+    border: 1px gray solid;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 200px;
+    
+}
+
+#modalSheet {
+    position: fixed !important;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.bookItem > img {
+    flex: 0 0 auto;
+    width: 150px;
+    height: 200px;
+}
+
+.bookDetail {
+    max-width: 200px; /* Prevents text from getting too wide */
+}
+
+.modal-body > p {
+    max-width: 400px;
+}

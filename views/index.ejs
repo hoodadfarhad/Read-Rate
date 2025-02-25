@@ -127,7 +127,7 @@
               <div class="info">
                 <p>Rating: <%= element.rating %>/10</p>
               <p>Author: <%= element.author %></p>
-              
+              <p>Date: <%= element.date.toISOString().split("T")[0] %></p>   <!--to only have up to day, not the time -->
               </div>
               
 
@@ -147,8 +147,12 @@
             <div class="readMoreClass">
               <form action="/readMore" method="post"> 
                   <input type="hidden" name="sentNote" value="<%= element.note %>">
-                  <button type="submit" class="btn btn-outline-secondary">Read More</button>
+                  <button type="submit" class="btn btn-outline-secondary">Notes</button>
               </form> 
+              <form action="/deleteNote" method="post"> 
+                <input type="hidden" name="dlReqNote" value="<%= element.id %>">
+                <button type="submit" class="btn btn-outline-danger">Delete</button>
+            </form> 
           </div>
 
 

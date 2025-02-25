@@ -5,8 +5,14 @@ import axios from "axios";
 
 const app = express();
 const port = 3000;
-const bookArray =[{img:'bookCover.jpg', title: "kir1", author: "ahmad", rating:6, note: "Kheyli foqolade bud" }, {img:'bookCover.jpg', title: "kir2", author: "ali", rating:2, note: "Kheyli bad bud" }, {img:'bookCover.jpg', title: "kiri3", author: "mohammad", rating:8, note: "Kheyli AWWWWWWWWWLi bud Kheyli AWWWWWWWWWLi budKheyli AWWWWWWWWWLi budKheyli AWWWWWWWWWLi budKheyli AWWWWWWWWWLi budKheyli AWWWWWWWWWLi budKheyli AWWWWWWWWWLi budKheyli AWWWWWWWWWLi budKheyli AWWWWWWWWWLi bud" }, {img:'bookCover.jpg', title: "kir1", author: "ahmad", rating:6, note: "Kheyli foqolade bud" }, {img:'bookCover.jpg', title: "kir2", author: "ali", rating:2, note: "Kheyli bad bud" }, {img:'bookCover.jpg', title: "kiri99", author: "mohammad", rating:8, note: "NANE JENDEEEEEEE AWWWWWWWWWLi budKheyli AWWWWWWWjhgjhbbhgvjyhgvjyhghvyjhgvjyhgvyjhgvjythgvjyhgvjyhgvyjhfvcjyWWLi budKheyli AWWWWWWWWWLi budKheyli AWWWWWWWWWLi budKheyli AWWWWWWWWWLi budKheyli AWWWWWWWWWLi budKheyli AWWWWWWWWWLi bud" }, {img:'bookCover.jpg', title: "kir1", author: "ahmad", rating:6, note: "Kheyli foqolade bud" }, {img:'bookCover.jpg', title: "kir2", author: "ali", rating:2, note: "Kheyli bad bud" }, {img:'bookCover.jpg', title: "kiri3", author: "mohammad", rating:8, note: "Kheyli AWWWWWWWWWLi bud Kheyli AWWWWWWWWWLi budKheyli AWWWWWWWWWLi budKheyli AWWWWWWWWWLi budKheyli AWWWWWWWWWLi budKheyli AWWWWWWWWWLi budKheyli AWWWWWWWWWLi budKheyli AWWWWWWWWWLi budKheyli AWWWWWWWWWLi bud" },{img:'bookCover.jpg', title: "kir2", author: "ali", rating:2, note: "Kheyli bad bud" },{img:'bookCover.jpg', title: "kir2", author: "ali", rating:2, note: "Kheyli bad bud" }, {img:'bookCover.jpg', title: "kir2", author: "ali", rating:2, note: "Kheyli bad bud" },];
+//const bookArray =[{img:'bookCover.jpg', title: "kir1", author: "ahmad", rating:6, note: "Kheyli foqolade bud" }, {img:'bookCover.jpg', title: "kir2", author: "ali", rating:2, note: "Kheyli bad bud" }, {img:'bookCover.jpg', title: "kiri3", author: "mohammad", rating:8, note: "Kheyli AWWWWWWWWWLi bud Kheyli AWWWWWWWWWLi budKheyli AWWWWWWWWWLi budKheyli AWWWWWWWWWLi budKheyli AWWWWWWWWWLi budKheyli AWWWWWWWWWLi budKheyli AWWWWWWWWWLi budKheyli AWWWWWWWWWLi budKheyli AWWWWWWWWWLi bud" }, {img:'bookCover.jpg', title: "kir1", author: "ahmad", rating:6, note: "Kheyli foqolade bud" }, {img:'bookCover.jpg', title: "kir2", author: "ali", rating:2, note: "Kheyli bad bud" }, {img:'bookCover.jpg', title: "kiri99", author: "mohammad", rating:8, note: "NANE JENDEEEEEEE AWWWWWWWWWLi budKheyli AWWWWWWWjhgjhbbhgvjyhgvjyhghvyjhgvjyhgvyjhgvjythgvjyhgvjyhgvyjhfvcjyWWLi budKheyli AWWWWWWWWWLi budKheyli AWWWWWWWWWLi budKheyli AWWWWWWWWWLi budKheyli AWWWWWWWWWLi budKheyli AWWWWWWWWWLi bud" }, {img:'bookCover.jpg', title: "kir1", author: "ahmad", rating:6, note: "Kheyli foqolade bud" }, {img:'bookCover.jpg', title: "kir2", author: "ali", rating:2, note: "Kheyli bad bud" }, {img:'bookCover.jpg', title: "kiri3", author: "mohammad", rating:8, note: "Kheyli AWWWWWWWWWLi bud Kheyli AWWWWWWWWWLi budKheyli AWWWWWWWWWLi budKheyli AWWWWWWWWWLi budKheyli AWWWWWWWWWLi budKheyli AWWWWWWWWWLi budKheyli AWWWWWWWWWLi budKheyli AWWWWWWWWWLi budKheyli AWWWWWWWWWLi bud" },{img:'bookCover.jpg', title: "kir2", author: "ali", rating:2, note: "Kheyli bad bud" },{img:'bookCover.jpg', title: "kir2", author: "ali", rating:2, note: "Kheyli bad bud" }, {img:'bookCover.jpg', title: "kir2", author: "ali", rating:2, note: "Kheyli bad bud" },];
+var bookArray =[];
 let targetedNote = "";
+let title = "";
+let author = "";
+let rating;
+let note = "";
+let id;
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -21,14 +27,22 @@ const db = new pg.Client({
 });
 db.connect();
 
-
+db.query("SELECT * FROM public.book", (err,result)=>{
+  if(err){
+    console.error("sth went wrong", err.stack);
+  } else{
+  bookArray = result.rows;
+  
+  
+  }
+})
 
 app.get("/", (req,res)=>{
   res.render("welcome.ejs");
 })
 
 app.get("/books", (req,res)=>{
-
+  console.log(bookArray);
 let chamedun = {sentBookArray : bookArray, 
   modalNote : targetedNote }
 
@@ -73,7 +87,70 @@ app.post("/resetModal", (req,res)=>{
  
  })
 
+ app.post("/addingBook", (req,res)=>{
 
+
+
+  title = req.body.title;
+  author = req.body.author;
+  rating =  parseInt(req.body.rate, 10); // Convert from string to integer (base 10)
+  note = req.body.note;
+
+  console.log(typeof(rating));
+
+  db.query("INSERT INTO book (title,author,rating,note) VALUES($1,$2,$3,$4)", [title,author,rating,note]);
+
+  db.query("SELECT * FROM public.book", (err,result)=>{
+    if(err){
+      console.error("sth went wrong", err.stack);
+    } else{
+    bookArray = result.rows;
+    console.log("mohtaviate araye jadid az dakhele addingBook:");
+    console.log(bookArray);
+    }
+  })
+  
+  
+   res.redirect("/books");
+ 
+ })
+
+
+
+
+ app.post("/deleteNote", (req,res)=>{
+
+
+
+  id = req.body.dlReqNote;
+  console.log(id);
+  console.log(typeof(id));
+
+  db.query("DELETE FROM book WHERE id = $1", [id], (err, result) => {
+    if (err) {
+        console.error("Deletion failed:", err.stack);
+    } else {
+        console.log("Book deleted successfully");
+    }
+});
+
+
+  db.query("SELECT * FROM public.book", (err,result)=>{
+    if(err){
+      console.error("sth went wrong", err.stack);
+    } else{
+    bookArray = result.rows;
+    console.log("mohtaviate araye jadid az dakhele addingBook:");
+    console.log(bookArray);
+    }
+  })
+  
+  
+   res.redirect("/books");
+ 
+ })
+
+ 
 
 
 function Message(name,email,message) {

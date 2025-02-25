@@ -1,6 +1,45 @@
 <%-  include("partials/header.ejs") %>
 
+<form action="/addingBook" method="post">
 
+    <div class="mb-3">
+        <label for="title" class="form-label">Title:</label>
+        <input type="text" class="form-control" id="title" name="title" placeholder="Enter the book title" required>
+    </div>
+
+
+    <div class="mb-3">
+        <label for="rate" class="form-label">Rate:</label>
+        <select class="form-select" id="rate" name="rate" required>
+            <option value="">Choose an option...</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label for="author" class="form-label">Author:</label>
+        <input type="text" class="form-control" id="author" name="author" placeholder="Enter the author name" required>
+    </div>
+
+<!-- Textarea (Additional Comments) -->
+<div class="mb-3">
+    <label for="note" class="form-label">Note:</label>
+    <textarea class="form-control" id="note" name="note" rows="6" placeholder="Write your notes here..."></textarea>
+</div>
+
+
+    <button type="submit" class="btn btn-primary w-100">Submit</button>
+
+</form>
 
 
 <%-  include("partials/footer.ejs") %>

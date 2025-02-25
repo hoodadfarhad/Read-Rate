@@ -46,6 +46,8 @@ display: grid;
 grid-template-columns: 1fr 1fr;
 grid-template-rows: 1fr 1fr;
 gap: 25px;
+
+margin: 0px 200px 0px 200px;
 text-align: center;
 
 
@@ -82,3 +84,22 @@ text-align: center;
 .modal-body > p {
     max-width: 400px;
 }
+
+
+@media (max-width: 800px) {
+    .allBooks {
+        display: grid !important;
+        grid-template-columns: 1fr !important; /* One column layout */
+        gap: 15px !important;
+        padding: 10px;
+        margin: 20px 90px 20px 90px;
+    }
+}
+
+
+
+    
+       
+    
+    
+

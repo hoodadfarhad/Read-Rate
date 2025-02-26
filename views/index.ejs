@@ -1,7 +1,7 @@
 <%-  include("partials/header.ejs") %>
 
  <!-- hidden modal that gets toggled by clicking on read more btn -->
-<% console.log("from frontend");%>
+<% console.log("from index.ejs frontend");%>
 
 
  <% if (modalNote.length > 0) { %>
@@ -64,24 +64,27 @@
 
 
           <li class="mb-1">
-            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"  aria-expanded="false">
+            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" 
+                    data-bs-toggle="collapse" 
+                    data-bs-target="#dashboard-collapse" 
+                    aria-expanded="false">
               Sort By
             </button>
-
-
+          
             <div class="collapse" id="dashboard-collapse">
               <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Rating</a></li>
-                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Date</a></li>
-                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Alphabetically</a></li>
+                <li><a href="/ratingSort" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Rating</a></li>
+                <li><a href="/dateSort" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Date</a></li>
+                <li><a href="/alphaSort" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Alphabetically</a></li>
               </ul>
             </div>
           </li>
+          
 
 
 
           <li class="mb-1">
-            <input type="text" placeholder="Enter Title Here: ">
+            <input type="text" placeholder="Enter Title Here: " id="searchInp">
           </li>
 
 
@@ -114,17 +117,17 @@
 
    
             
-            <div class="bookItem">
+            <div class="bookItem search">
 
 
-            <img src= "<%= element.img %>" alt="">
+            <img src= "<%= element.coverurl %>" alt="">
             <div class="bookDetail">
 
 
               
-              <h2><%= element.title %></h2>
+              <h2 class="searchTitle"><%= element.title %></h2>
 
-              <div class="info">
+              <div class="info ">
                 <p>Rating: <%= element.rating %>/10</p>
               <p>Author: <%= element.author %></p>
               <p>Date: <%= element.date.toISOString().split("T")[0] %></p>   <!--to only have up to day, not the time -->

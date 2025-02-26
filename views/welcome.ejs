@@ -17,7 +17,7 @@
 
 
     <div class="carousel-inner" >
-      <div class="carousel-item carHeight" >
+      <div class="carousel-item active carHeight" >
         <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect></svg>
         <div class="container">
           <div class="carousel-caption text-start">
@@ -29,8 +29,8 @@
       </div>
 
 
-      <div class="carousel-item active carHeight" >
-        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect></svg>
+      <div class="carousel-item  carHeight" >
+        <svg class="bd-placeholder-img"  width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect></svg>
         <div class="container">
           <div class="carousel-caption">
             <h1>What’s My Next Great Read? You Decide!</h1>
@@ -39,7 +39,6 @@
           </div>
         </div>
       </div>
-      
     </div>
 
 
@@ -47,48 +46,64 @@
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">previous</span>
     </button>
+    
     <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">next</span>
     </button>
   </div>
 
+ <!-- check if there are books to show case in welcome -->
+  <% if (locals.sentTopTwo.length === 0) { %>
+  <h2> No book has been added so far. Why not adding one now?</h2>
+  <a href="/new">
+    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0"  aria-expanded="true">
+      Add New
+    </button>
+  </a>
+    <% } else if (locals.sentTopTwo.length >= 1) {%>
+
+
 
  <!-- first top rated book -->
   <div class="topRated featurette">
 
     <div class="">
-      <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-bg)"></rect></svg>
+      <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" src="<%= locals.sentTopTwo[0].coverurl  %>" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-bg)"></rect></svg>
     </div>
 
     <div class="">
         <h2 class="featurette-heading fw-normal "> Top <span class="text-body-secondary"> rating </span> book so far</h2>
-        <p class="lead">Book title</p>
-        <p class="lead">Review on top rated book  so far goes here</p>
+        <p class="lead"><%=locals.sentTopTwo[0].title%></p>
+        <p class="lead">by <%=locals.sentTopTwo[0].author%> with the rate of <%=locals.sentTopTwo[0].rating%>/10</p>
       </div>
       
   </div>
 
-
+<%  if (locals.sentTopTwo.length === 2){%>
   <!-- second top rated book -->
   <div class="topRated featurette">
 
 
     <div class="">
         <h2 class="featurette-heading fw-normal "> Second top <span class="text-body-secondary"> rating </span> book so far</h2>
-        <p class="lead">Book title</p>
-        <p class="lead">Review on second top rated book  so far goes here</p>
+        <p class="lead"><%=locals.sentTopTwo[1].title%></p>
+        <p class="lead">by <%=locals.sentTopTwo[1].author%> with the rate of <%=locals.sentTopTwo[1].rating%>/10</p>
       </div>
 
     <div class="">
-      <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-bg)"></rect></svg>
+      <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" src="<%= locals.sentTopTwo[1].coverurl  %>" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-bg)"></rect></svg>
     </div>
 
    
       
   </div>
 
+<% } %>
 
+
+
+<% } %>
 
 </div>
 

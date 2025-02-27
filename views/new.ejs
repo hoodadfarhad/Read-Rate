@@ -1,6 +1,9 @@
 <%-  include("partials/header.ejs") %>
 
-<form action="/addingBook" method="post">
+
+<div class="fullAdd">
+
+<form action="/addingBook" method="post" class="addForm">
 
     <div class="mb-3">
         <label for="title" class="form-label">Title:</label>
@@ -37,9 +40,9 @@
 </div>
 
 
-    <button type="submit" class="btn btn-primary w-100">Submit</button>
+    <button type="submit" class="btn btn-secondary w-40">Submit</button>
 
 </form>
-
+</div>
 
 <%-  include("partials/footer.ejs") %>

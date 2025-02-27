@@ -1,10 +1,39 @@
 .main{
    /* height: 80vh; */
+   background-color: #EFE9D5;
+}
+
+#myCarousel{
+    background-color: #71BBB2;
+}
+
+html, body {
+    height: 100%; 
+    display: flex;
+    flex-direction: column;
+    margin: 0; 
+    background-color: #EFE9D5;
+}
+
+main {
+    flex: 1; 
+}
+
+.footer {
+    background-color: #497D74; /* Your desired background */
+    width: 100%;
+    padding: 20px;
+}
+
+
+.btnGen{
+    background-color: #71BBB2;
+    color: black;
 }
 
 #menu{
     display: none;
-    background-color: burlywood;
+    background-color: #497D74;
     border: 5px black solid;
     position: fixed;
     top: 35%;
@@ -12,12 +41,56 @@
     
 }
 
+#menuTrigger{
+    background-color: #71BBB2;
+}
+
+.navTarget{
+    padding-right: 190px;
+}
+
+.header{
+    background-color: #497D74;
+    
+    
+}
+
+
+.contact{
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #27445D;
+border-radius: 30%;
+color: white;
+    padding: 70px 70px 70px 70px;
+}
+
+.fullContact{
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #EFE9D5;
+}
+
+
+.contact div {
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+    gap: 15px;
+}
+
 .fixedBtnContainer > button {
 
 
     position: fixed;
-    margin-left: 5%;
-    top: 45%;
+    margin-left: 90%;
+    top: 80%;
 
 
 }
@@ -32,11 +105,16 @@
 
 .topRated{
     display: flex;
-    
+    /* border-bottom: 2px black solid; */
     justify-content:center;
     align-items: center;
-    gap: 250px;
-    padding: 20px 0px 20px 0px;
+    gap: 150px;
+    padding: 40px 0px 40px 0px;
+   /* background-color: #EFE9D5;  */
+}
+
+.top1{
+    border-bottom: 2px black solid; 
 }
 
 
@@ -51,15 +129,22 @@ margin: 0px 200px 0px 200px;
 text-align: center;
 
 
+
+
+
 }
 
 
 .bookItem{
     border: 1px gray solid;
     display: flex;
-    justify-content: space-around;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
-    height: 200px;
+    height: 210px;
+    background-color: #27445D;
+    color: white;
+    border-radius: 5px
     
 }
 
@@ -70,26 +155,153 @@ text-align: center;
     transform: translate(-50%, -50%);
 }
 
+#textModal{
+   
+        max-width: 60ch; 
+        word-wrap: break-word; /* Ensures words wrap properly */
+        line-height: 1.5; 
+    
+}
+
 
 .bookItem > img {
     flex: 0 0 auto;
     width: 150px;
-    height: 200px;
+    height: 207px;
+    border: 1px gray solid;
+    border-top: 3px;
+    
 }
 
 .bookDetail {
-    max-width: 200px; /* Prevents text from getting too wide */
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: stretch; /* Stretch children to fill width */
+    height: 210px;
+    flex: 1;
+    margin-left: 5px;
 }
+
+.bookDetail > h5 {
+    border-bottom: 1px gray solid;
+    flex-grow: 1; /* Expands to take available space */
+    text-align: left;
+    padding-left: 25px;
+
+    display: flex; /* Make it a flex container */
+    align-items: center; /* Center text inside */
+}
+
+
+.info{
+    /* border: 1px gray solid; */
+    flex-grow: 1;
+    
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: stretch;
+}
+
+.ps{
+    padding-left: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    align-items:flex-start;
+}
+
+.readMoreClass{
+   
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    padding-right: 4px;
+    align-items:center;
+}
+
 
 .modal-body > p {
     max-width: 400px;
 }
 
+.addForm{
+    
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #27445D;
+    color: white;
+    border-radius: 5px;
+    padding: 20px 0px 100px 0px;
+}
 
-@media (max-width: 800px) {
+.addForm > div{
+    
+    width: 80%;
+  
+  
+    color: white;
+    border-radius: 5px
+}
+
+.addForm > button{
+    
+    width: 40%;
+  
+  
+    color: white;
+    border-radius: 5px
+}
+
+.fullAdd{
+    
+   
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 50px 0px 50px 0px;
+}
+
+
+@media (max-width: 1150px) {
     .allBooks {
         display: grid !important;
         grid-template-columns: 1fr !important; /* One column layout */
+        gap: 15px !important;
+        padding: 10px;
+        margin: 20px 90px 20px 90px;
+    }
+
+    
+}
+
+@keyframes vibrate {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-2px); }
+    40% { transform: translateX(2px); }
+    60% { transform: translateX(-2px); }
+    80% { transform: translateX(2px); }
+    100% { transform: translateX(0); }
+}
+
+.vibrate {
+    animation: vibrate 0.3s ease-in-out;
+}
+
+
+
+@media (min-width: 1350px) {
+    .allBooks {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr 1fr !important; /* One column layout */
         gap: 15px !important;
         padding: 10px;
         margin: 20px 90px 20px 90px;

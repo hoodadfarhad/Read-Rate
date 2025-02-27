@@ -17,7 +17,7 @@ let author = "";
 let rating;
 let note = "";
 let id;
-let sortChoice = 1;
+let sortChoice = 2;
 let indicator = 0;
 
 
@@ -85,16 +85,8 @@ async function dateSort() {
 
 // For Sorting Request by rating, and welcome page top two
 async function ratingSort() {
-const result = await db.query("SELECT * FROM public.book ORDER BY rating DESC")
+const result = await db.query("SELECT * FROM public.book ORDER BY rating DESC");
   bookArrayRating = result.rows;
-
-  if (bookArrayRating.length === 1) { // if only there was one book in DB
-    topTwo.push(bookArrayRating[0]);
-  } else if (bookArrayRating.length > 1){
-    topTwo.push(bookArrayRating[0]);
-    topTwo.push(bookArrayRating[1]);
-  }
-
 
  return bookArrayRating;
 }
@@ -135,10 +127,27 @@ sortChoice = choice;
 
 }
 
-app.get("/", (req,res)=>{
+app.get("/", async (req,res)=>{
+  
+ let x = await ratingSort();
+  
+ 
+
+  if (x.length === 1) { // if only there was one book in DB
+
+    // console.log("im in A");
+    topTwo.push(x[0]);
+  } else if (x.length > 1){
+    // console.log("im in B");
+    topTwo.push(x[0]);
+    topTwo.push(x[1]);
+  }
+  // console.log("top two are:");
+  // console.log(topTwo);
 
   let packWelcome = {sentTopTwo : topTwo} 
-  
+
+  topTwo = [];
   
   res.render("welcome.ejs", packWelcome);
 })
@@ -213,7 +222,7 @@ app.post("/resetModal", (req,res)=>{
     console.log(typeof rating);
 
     // Fetch the book cover asynchronously
-    const coverURL = await fetchBooks(title); // ✅ Wait for fetchBooks to complete
+    const coverURL = await fetchBooks(title); //  Wait for fetchBooks to complete
 
     // Insert into database and wait for it to complete
     await db.query("INSERT INTO book (title, author, rating, note, coverurl) VALUES($1, $2, $3, $4, $5)", 
@@ -224,9 +233,9 @@ app.post("/resetModal", (req,res)=>{
 
     // Store the updated book array
      bookArray = result.rows;
-    console.log("Updated book array:", bookArray);
+    // console.log("Updated book array:", bookArray);
     sortChoice =4;
-    // Redirect only after all operations are completed
+    
     res.redirect("/books");
   } catch (err) {
     console.error("Something went wrong:", err.stack);
@@ -261,11 +270,11 @@ app.post("/resetModal", (req,res)=>{
     } else{
     bookArray = result.rows;
     console.log("mohtaviate araye jadid az dakhele addingBook:");
-    console.log(bookArray);
+   // console.log(bookArray);
     }
   })
   
-  sortChoice = 4;
+  sotring(1);
   
    res.redirect("/books");
  

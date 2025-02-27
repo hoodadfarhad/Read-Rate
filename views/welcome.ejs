@@ -23,7 +23,7 @@
           <div class="carousel-caption text-start">
             <h1>Turn the Page, Discover the Magic!</h1>
             <p class="opacity-75">Looking for your next great read? Let's explore captivating stories together!</p>
-            <p><a class="btn btn-lg btn-primary" href="/books">find it here</a></p>
+            <p><a class="btn btn-lg btnGen" href="/books">find it here</a></p>
           </div>
         </div>
       </div>
@@ -35,7 +35,7 @@
           <div class="carousel-caption">
             <h1>What’s My Next Great Read? You Decide!</h1>
             <p>What book should I read next? Drop your suggestions below! 👇</p>
-            <p><a class="btn btn-lg btn-primary" href="/contact"> suggest a book</a></p>
+            <p><a class="btn btn-lg btnGen" href="/contact"> suggest a book</a></p>
           </div>
         </div>
       </div>
@@ -66,14 +66,14 @@
 
 
  <!-- first top rated book -->
-  <div class="topRated featurette">
+  <div class="topRated top1 featurette">
 
     <div class="">
       <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" src="<%= locals.sentTopTwo[0].coverurl  %>" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-bg)"></rect></svg>
     </div>
 
     <div class="">
-        <h2 class="featurette-heading fw-normal "> Top <span class="text-body-secondary"> rating </span> book so far</h2>
+        <h2 class="featurette-heading fw-normal "> Top rating book so far</h2>
         <p class="lead"><%=locals.sentTopTwo[0].title%></p>
         <p class="lead">by <%=locals.sentTopTwo[0].author%> with the rate of <%=locals.sentTopTwo[0].rating%>/10</p>
       </div>
@@ -82,11 +82,11 @@
 
 <%  if (locals.sentTopTwo.length === 2){%>
   <!-- second top rated book -->
-  <div class="topRated featurette">
+  <div class="topRated top2 featurette">
 
 
     <div class="">
-        <h2 class="featurette-heading fw-normal "> Second top <span class="text-body-secondary"> rating </span> book so far</h2>
+        <h2 class="featurette-heading fw-normal "> Second top rating book so far</h2>
         <p class="lead"><%=locals.sentTopTwo[1].title%></p>
         <p class="lead">by <%=locals.sentTopTwo[1].author%> with the rate of <%=locals.sentTopTwo[1].rating%>/10</p>
       </div>

@@ -35,7 +35,15 @@ $("#menuTrigger").on("mouseover", function () {
     // Smoothly fade in the menu
     $("#menu").stop(true, true).fadeIn(300);        // clearing the stack here
     $("#menuTrigger").addClass("noDisplay"); 
-    $("#menu").css("display","inline-block");       // changin none to inline-block
+  //  $("#menu").css();       // changin none to inline-block
+
+    $("#menu").css({
+    "display":"inline-block",
+    "position": "absolute", // Ensures absolute positioning
+    "top": "60%",  // Set the top position
+    "left": "70%" // Set the left position
+});
+
 });
 
 $("#menu").on("mouseover", function () {
@@ -66,7 +74,7 @@ $(document).ready(function () {
     let searchInput = $(this).val().toLowerCase();
 
     if (searchInput === "") {
-      $(".search").css("background-color", "white").show(); // Reset when empty
+      $(".search").css("background-color", "").show(); // Reset when empty
       $(".search").find(".searchTitle").css("background-color", "inherit").show();
       return; // Stop further execution
     }

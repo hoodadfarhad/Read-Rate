@@ -6,7 +6,7 @@ It allows users to track, rate, and manage their reading habits in an intuitive 
 🚀 Features
     - 📖 Track and rate books you've read
     - 📝 Write reviews and manage a personal reading list
-    - 🔍 Search for books by title or author
+    - 🔍 Search for books by title 
     - 🎨 Responsive and user-friendly interface using EJS and CSS
     - 🗄️ Backend powered by Express.js and PostgreSQL
 

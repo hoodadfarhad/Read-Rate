@@ -10,6 +10,10 @@ It allows users to track, rate, and manage their reading habits in an intuitive 
     - 🎨 Responsive and user-friendly interface using EJS and CSS
     - 🗄️ Backend powered by Express.js and PostgreSQL
 
+![Screenshot 2025-03-14 at 11 58 35 AM](https://github.com/user-attachments/assets/ac9dcaf4-82c7-469b-a6f1-5bc82df5ce19)
+![Screenshot 2025-03-14 at 11 58 57 AM](https://github.com/user-attachments/assets/0166552c-9dcc-4f5e-b5b2-a9b3e3447a5a)
+![Screenshot 2025-03-14 at 1 24 23 PM](https://github.com/user-attachments/assets/e5c0968e-c7e2-4e49-a342-215a984e9b95)
+![Screenshot 2025-03-14 at 12 00 29 PM](https://github.com/user-attachments/assets/33e92608-698f-41a6-9edb-137a0119070e)
 
     
 
